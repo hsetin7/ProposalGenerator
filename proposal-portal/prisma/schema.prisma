@@ -1,0 +1,45 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../app/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id           String     @id @default(cuid())
+  email        String     @unique
+  passwordHash String
+  createdAt    DateTime   @default(now())
+  proposals    Proposal[]
+}
+
+model Proposal {
+  id        String    @id @default(cuid())
+  userId    String
+  user      User      @relation(fields: [userId], references: [id])
+  tier      String    @default("BASIC")
+  status    String    @default("PENDING")
+  createdAt DateTime  @default(now())
+  bookings  Booking[]
+  payment   Payment?
+}
+
+model Booking {
+  id         String   @id @default(cuid())
+  proposalId String
+  proposal   Proposal @relation(fields: [proposalId], references: [id])
+  startTime  DateTime
+  endTime    DateTime
+  createdAt  DateTime @default(now())
+}
+
+model Payment {
+  id         String   @id @default(cuid())
+  proposalId String   @unique
+  proposal   Proposal @relation(fields: [proposalId], references: [id])
+  amount     Int
+  status     String   @default("PENDING")
+  createdAt  DateTime @default(now())
+}

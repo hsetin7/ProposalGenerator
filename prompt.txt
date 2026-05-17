@@ -1,0 +1,40 @@
+Task: Build a Proposal Review & Booking Portal
+
+1. Objective:
+Create a full-stack web application where a client can log in, review a generated proposal, choose between two tiers (Basic vs. Enhanced), book training sessions (if Enhanced), and make a payment.
+
+2. Core Features:
+
+Authentication: Simple login/signup flow (use Lucide icons for UI).
+
+Proposal Dashboard: Display specific details (e.g., Project Scope, Timeline, Deliverables).
+
+Tier Selection:
+
+Basic ($1000): Standard deliverables only.
+
+Enhanced ($2500): Includes "1-on-1 Training" (10 hours total).
+
+Booking System (Enhanced Only): >     * Provide a calendar interface.
+
+Users must book exactly five 2-hour slots in the future.
+
+Payment Integration: Implement a "Pay Now" button that integrates with a mock payment provider (e.g., Stripe or a simple simulated checkout).
+
+3. Technical Stack:
+
+Frontend: React with Tailwind CSS and Shadcn UI components.
+
+Backend: Next.js API routes or a simple Express server.
+
+Database: Prisma with SQLite (for local dev) to store user selections and bookings.
+
+4. Instructions for Claude:
+
+First, explore the current directory to see if there is an existing project structure.
+
+If empty, initialize a Next.js project.
+
+Create a CLAUDE.md file to track the project rules and progress.
+
+Generate a step-by-step implementation plan and wait for my approval before coding.
